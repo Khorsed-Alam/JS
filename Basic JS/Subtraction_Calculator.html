@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subtraction Calculator</title>
+</head>
+<body>
+    <h1> Subtraction Calculator</h1><hr>
+
+    <input type="number" id="number1" placeholder="Enter First Number">
+    <input type="number" id="number2" placeholder="Enter Second Number"> 
+
+    <button onclick="Subtraction()">Submit</button>
+
+    <h2 id="Result"></h2>
+
+    <script>
+        function Subtraction(){
+            let num1str= document.getElementById("number1").value;
+            let num1= Number(num1str);
+
+            let num2str= document.getElementById("number2").value;
+            let num2=Number(num2str);
+
+            let Sub= num1-num2;
+
+            document.getElementById("Result").innerText= "Result is : "+ Sub;
+        }
+    </script>
+</body>
+</html>

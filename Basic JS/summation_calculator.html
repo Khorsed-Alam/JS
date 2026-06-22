@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>summation_calculator</title>
+</head>
+<body>
+    <h2>Summation Calculator</h2><hr>
+
+    <input type="number" id="number1" placeholder="Enter First Number">
+    <input type="number" id="number2" placeholder="Enter Second Number">
+    <button onclick="Summation()">Submit</button>
+
+    <h3 id="Result"> </h3>
+    <Script>
+        function Summation(){
+
+            let num1str=document.getElementById("number1").value;
+            let num1= Number(num1str);
+
+            let num2str= document.getElementById("number2").value;
+            let num2= Number(num2str);
+
+
+            let Sum= (num1 + num2);
+             
+
+            document.getElementById("Result").innerText= "Resut is: "+ Sum ;
+
+            
+
+        }
+    </Script>
+</body>
+</html>

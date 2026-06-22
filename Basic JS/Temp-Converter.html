@@ -1,0 +1,37 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+ </head>
+ <body>
+
+    <h3>Temperature Converter( Celsius- Fahrenheit) </h3>
+    <input type="number" id="CelsiusInput" placeholder="Enter Temperature " >
+     <button onclick="convertTemp()"> Submit </button>
+
+     <h3 id="result"></h3>
+
+
+     <script>
+        function convertTemp(){
+            let Celsiusstr= document.getElementById("CelsiusInput").value;
+
+            // convert to number;
+
+            let Celsius= Number(Celsiusstr);
+
+            // formula
+
+            let Fahrenheit=(Celsiusstr * (9/5))+32;
+            
+            document.getElementById("result").innerText=Celsius+ "^0 C is equal to " + Fahrenheit + "^o F";
+
+            
+        }
+     </script>
+
+    
+ </body>
+ </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd Even Checker</title>
+</head>
+<body>
+    <h1>Odd /Even Checker</h1> <hr>
+
+    <input type="number" id="number" placeholder="Enter an any integer number">
+    <button onclick="Odd_EvenCheck()">Submit</button>
+
+    <h3 id="Result"></h3>
+
+    <Script>
+        function Odd_EvenCheck(){
+            let numstr=document.getElementById("number").value;
+            let num=Number(numstr);
+
+            if(num%2 ==0){
+                document.getElementById("Result").innerText= num + " Number is Even"
+            }else{
+                document.getElementById("Result").innerText= num + " Number is Odd"
+            }
+        }
+    </Script>
+
+
+    
+</body>
+</html>

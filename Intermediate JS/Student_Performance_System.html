@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Performance System</title>
+</head>
+<body>
+
+    <h2>Smart Student Performance & Password Verification System</h2>
+
+    <input type="text" id="nameInput" placeholder="Enter Student Name">
+    <br><br>
+
+    <input type="text" id="markInput" placeholder="Enter Marks">
+    <br><br>
+
+    <input type="password" id="passwordInput" placeholder="Enter Password">
+    <br><br>
+
+    <button id="submitBtn">Submit</button>
+
+    <br><br>
+
+    <div id="output">
+        Waiting for input...
+    </div>
+
+    <script>
+
+// Global Variables
+let totalStudents = 0;
+let totalMarks = 0;
+let attempts = 0;
+
+// Button Event Listener
+document.getElementById("submitBtn").addEventListener("click", function () {
+
+    attempts++;
+
+    let name = document.getElementById("nameInput").value;
+    let marks = parseInt(document.getElementById("markInput").value);
+    let password = document.getElementById("passwordInput").value;
+
+    let output = document.getElementById("output");
+
+    // Lock System After 5 Attempts
+    if (attempts > 5) {
+
+        document.getElementById("submitBtn").disabled = true;
+        document.getElementById("nameInput").disabled = true;
+        document.getElementById("markInput").disabled = true;
+        document.getElementById("passwordInput").disabled = true;
+
+        output.innerText =
+            "Maximum Attempts Reached\nSystem Locked";
+
+        return;
+    }
+
+    // Marks Validation
+    if (isNaN(marks)) {
+        output.innerText = "Invalid Marks Input";
+        return;
+    }
+
+    // Password Validation using Regex
+    let hasUpper = /[A-Z]/.test(password);
+    let hasLower = /[a-z]/.test(password);
+    let hasNumber = /[0-9]/.test(password);
+    let hasSpecial = /[!@#$%^&*]/.test(password);
+
+    let passwordStatus;
+
+    if (hasUpper && hasLower && hasNumber && hasSpecial) {
+        passwordStatus = "Strong";
+    } else {
+        passwordStatus = "Weak";
+    }
+
+    // Grade Calculation
+    let grade;
+
+    if (marks >= 80 && marks <= 100) {
+        grade = "A+";
+    }
+    else if (marks >= 75) {
+        grade = "A";
+    }
+    else if (marks >= 70) {
+        grade = "B+";
+    }
+    else if (marks >= 65) {
+        grade = "B";
+    }
+    else if (marks >= 60) {
+        grade = "C";
+    }
+    else if (marks >= 50) {
+        grade = "D";
+    }
+    else {
+        grade = "F";
+    }
+
+    // Running Totals
+    totalStudents++;
+    totalMarks += marks;
+
+    let average = (totalMarks / totalStudents).toFixed(2);
+
+    // Random Lucky Number
+    let luckyNumber = Math.floor(Math.random() * 10) + 1;
+
+    let bonusMessage = "";
+
+    if (luckyNumber === 7) {
+        bonusMessage = "<br><b>Congratulations! Bonus Prize Winner 🎉</b>";
+    }
+
+    // Display Result
+    output.innerHTML =
+        "<b>Student:</b> " + name +
+        "<br><b>Marks:</b> " + marks +
+        "<br><b>Grade:</b> " + grade +
+        "<br><b>Average Marks:</b> " + average +
+        "<br><b>Lucky Number:</b> " + luckyNumber +
+        "<br><b>Password Status:</b> " + passwordStatus +
+        "<br><b>Total Students Processed:</b> " + totalStudents +
+        "<br><b>Attempts:</b> " + attempts +
+        bonusMessage;
+
+});
+
+    </script>
+
+</body>
+</html>

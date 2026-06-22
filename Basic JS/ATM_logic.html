@@ -1,0 +1,63 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple ATM</title>
+</head>
+<body>
+
+    <h1>ATM Machine</h1>
+    <hr>
+
+    <h3>Current Balance: <span id="balance">5000</span></h3>
+
+    <input type="number" id="amount" placeholder="Enter amount">
+
+    <br><br>
+
+    <button onclick="deposit()">Deposit</button>
+    <button onclick="withdraw()">Withdraw</button>
+
+    <h3 id="message"></h3>
+
+    <script>
+        let balance = 5000;
+
+        function deposit() {
+            let amt = Number(document.getElementById("amount").value);
+
+            if (amt <= 0) {
+                document.getElementById("message").innerText = "Enter valid amount!";
+                return;
+            }
+
+            balance += amt;
+
+            document.getElementById("balance").innerText = balance;
+            document.getElementById("message").innerText =
+                "Deposited: " + amt;
+        }
+
+        function withdraw() {
+            let amt = Number(document.getElementById("amount").value);
+
+            if (amt <= 0) {
+                document.getElementById("message").innerText = "Enter valid amount!";
+                return;
+            }
+
+            if (amt > balance) {
+                document.getElementById("message").innerText =
+                    "Error: Insufficient balance!";
+            } else {
+                balance -= amt;
+
+                document.getElementById("balance").innerText = balance;
+                document.getElementById("message").innerText =
+                    "Withdrew: " + amt;
+            }
+        }
+    </script>
+
+</body>
+</html>

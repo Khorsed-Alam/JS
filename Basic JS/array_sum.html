@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum Calculator</title>
+</head>
+<body>
+
+    <h1>Sum Calculator</h1>
+    <hr>
+
+    <label>Array Element</label><br>
+    <input type="number" id="element">
+    <br><br>
+
+    <button onclick="NextElement()">Next</button>
+    <button onclick="Calculate()">Calculate</button>
+
+    <h2 id="Result"></h2>
+
+    <script>
+
+        let arr = [];
+        let sum = 0;
+
+        function NextElement() {
+
+            let elementStr = document.getElementById("element").value;
+            let element = Number(elementStr);
+
+            sum = sum + element;
+
+            arr.push(element);
+
+            // Optional: Clear input after adding
+            document.getElementById("element").value = "";
+        }
+
+        function Calculate() {
+
+            document.getElementById("Result").innerHTML =
+                "Your Sum is : " + sum +
+                "<br>Array is : " + arr;
+        }
+
+    </script>
+
+</body>
+</html>

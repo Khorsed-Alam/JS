@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+</head>
+<body>
+
+    <h1>Shopping Cart</h1>
+    <hr>
+
+    <label>Item Name</label><br>
+    <input type="text" id="name">
+    <br><br>
+
+    <label>Price</label><br>
+    <input type="number" id="price">
+    <br><br>
+
+    <label>Amount</label><br>
+    <input type="number" id="amount">
+    <br><br>
+
+    <button onclick="AddToCart()">Add To Cart</button>
+
+    <h3 id="Cart">Your cart is empty.</h3>
+
+    <br>
+
+    <button onclick="Checkout()">Checkout</button>
+
+    <h2 id="Total">Your Total</h2>
+
+    <script>
+
+        let total_price = 0;
+        let itemList = "";
+
+        function AddToCart() {
+
+            let name = document.getElementById("name").value;
+
+            let priceStr = document.getElementById("price").value;
+            let price = Number(priceStr);
+
+            let amountStr = document.getElementById("amount").value;
+            let amount = Number(amountStr);
+
+            let item_price = price * amount;
+
+            total_price = total_price + item_price;
+
+            itemList = itemList + "Item: " + name +
+                       ", Price: " + item_price + "<br>";
+
+            document.getElementById("Cart").innerHTML = itemList;
+        }
+
+        function Checkout() {
+            document.getElementById("Total").innerText =
+                "Your Total is : " + total_price;
+        }
+
+    </script>
+
+</body>
+</html>

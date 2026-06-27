@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+</head>
+<body>
+
+    <h1>BMI Calculator</h1>
+    <hr>
+    <input type="number" id="height" placeholder="Enter Height">
+    <br><br>
+
+    
+    <input type="number" id="weight" placeholder="Enter Weight">
+    <br><br>
+
+ 
+    <input type="number" id="age" placeholder="Enter Age">
+    <br><br>
+
+    <button onclick="CalculateBMI()">Submit</button>
+
+    <h2 id="Result">Your BMI is still not calculated.</h2>
+
+    <script>
+        function CalculateBMI() {
+
+            let heightStr = document.getElementById("height").value;
+            let height = Number(heightStr);
+
+            let weightStr = document.getElementById("weight").value;
+            let weight = Number(weightStr);
+
+            let ageStr = document.getElementById("age").value;
+            let age = Number(ageStr);
+
+            let BMI = weight / (height * height);
+
+            if (BMI >= 18 && BMI <= 26 && age < 18) {
+                document.getElementById("Result").innerText =
+                    "Your BMI is : " + BMI.toFixed(2) + " (Healthy)";
+            }
+            else if (BMI >= 18 && BMI <= 24 && age >= 18) {
+                document.getElementById("Result").innerText =
+                    "Your BMI is : " + BMI.toFixed(2) + " (Healthy)";
+            }
+            else {
+                document.getElementById("Result").innerText =
+                    "Your BMI is : " + BMI.toFixed(2) + " (Unhealthy)";
+            }
+        }
+    </script>
+
+</body>
+</html>
